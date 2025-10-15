@@ -22,7 +22,6 @@ class EvaluationType extends AbstractType
     {
         $eval = $options['data'];
         $prof = $eval->getProfessor();
-
         $subjects = $prof->getSubjects();
         $classes = [];
         $classes = $prof->getClassLevels();
@@ -40,6 +39,9 @@ class EvaluationType extends AbstractType
                     'min' => 0,
                     'max' => 100,
                 ],
+            ])
+            ->add('category', TextType::class, [
+                'category' => 'catégories : DS, TP, BTS Blanc, …'
             ])
             ->add('subject', EntityType::class, [
                 'class' => Subject::class,

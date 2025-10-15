@@ -12,6 +12,7 @@
                 <th>Date</th>
                 <th>Label</th>
                 <th>Bareme</th>
+                <th>Category</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -22,6 +23,7 @@
                 <td>{{ evaluation.date ? evaluation.date|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ evaluation.label }}</td>
                 <td>{{ evaluation.bareme }}</td>
+                <td>{{ evaluation.category }}</td>
                 <td>
                     <a href="{{ path('app_evaluation_show', {'id': evaluation.id}) }}">show</a>
                     <a href="{{ path('app_evaluation_edit', {'id': evaluation.id}) }}">edit</a>
