@@ -22,6 +22,7 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNavDropdown">
                     <ul class="navbar-nav">
+                        {% set current = app.request.attributes.get('_route') %}
                         {% if is_granted('ROLE_STUDENT') %}
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="{{ path('app_student_notes', {id: app.user.id}) }}">Mes notes</a>
