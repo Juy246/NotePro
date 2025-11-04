@@ -74,4 +74,29 @@ class Student extends User
         }
         return null;
     }
+
+    public function getGradesAverage(): ?float
+    {
+        $countGrades = $this->getGrades()->count();
+        if ($countGrades != 0){
+            $sumGrades = 0;
+            $sumBaremes = 0;
+            foreach ($this->getGrades() as $grade){
+                //option 1: notes ramenées sur 20
+                //on ramène toutes les notes sur 20
+                $sumGrades += ($grade->getGrade()*20/$grade->getEvaluation()->getBareme());
+                //option 2: moyenne pondérée
+                //ou alors on fait une moyenne pondérée...les éval sur 10 comptent moins que celles sur 20
+                //$sumGrades += $grade->getGrade();
+                //$sumBaremes += $grade->getEvaluation()->getBareme();
+            }
+            //return option 1
+            return $sumGrades/$countGrades;
+            //return option 2
+            //return $sumGrades/$sumBaremes*20;
+        } else {
+            return null;
+        }
+    }
+
 }

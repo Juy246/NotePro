@@ -10,6 +10,7 @@ use App\Repository\ClassLevelRepository;
 use App\Repository\SubjectRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -40,9 +41,10 @@ class EvaluationType extends AbstractType
                     'max' => 100,
                 ],
             ])
-            ->add('category', TextType::class, [
-                'category' => 'catégories : DS, TP, BTS Blanc, …'
+            ->add('category', ChoiceType::class, [
+                'choices' => ['DS','TP'],
             ])
+
             ->add('subject', EntityType::class, [
                 'class' => Subject::class,
                 'label' => 'Matière',

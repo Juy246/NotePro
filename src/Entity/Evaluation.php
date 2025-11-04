@@ -177,4 +177,23 @@ class Evaluation
         return $this;
     }
 
+    public function getGradesAverage() : ?float
+    {
+        $countGrades = $this->getGrades()->count();
+        if ($countGrades != 0){
+            $sumGrades = 0;
+            foreach ($this->getGrades() as $grade){
+                if (!$grade->isPresent() || $grade->getGrade() === null){
+                    $countGrades--;
+                    continue;
+                }
+                $sumGrades += $grade->getGrade();
+            }
+            return $sumGrades/$countGrades;
+        } else {
+            return null;
+
+        }
+    }
+
 }
